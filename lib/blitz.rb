@@ -27,5 +27,5 @@ end
 
 require 'blitz/client'
 require 'blitz/curl/error'
-require 'blitz/curl/verify'
+require 'blitz/curl/sprint'
 require 'blitz/command'

@@ -12,7 +12,7 @@ class Curl < Command
         end
 
         if not args['pattern']
-            verify args
+            sprint args
             return
         else
             error "Rushing not supported yet, but coming soon"
@@ -41,11 +41,11 @@ class Curl < Command
         puts
     end
 
-    def verify args
+    def sprint args
         begin
-            job = ::Blitz::Curl::Verify.execute args
+            job = ::Blitz::Curl::Sprint.execute args
             result = job.result
-            print_verify_result args, result
+            print_sprint_result args, result
         rescue ::Blitz::Curl::Error::Authorize => e
             authorize_error e
         rescue ::Blitz::Curl::Error::Region => e
@@ -55,7 +55,7 @@ class Curl < Command
         end
     end
 
-    def print_verify_result args, result
+    def print_sprint_result args, result
         rtt = result.duration
 		if rtt < 1.0
 			rtt = (rtt * 1000).floor.to_s + ' ms';

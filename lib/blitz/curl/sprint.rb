@@ -1,6 +1,6 @@
 class Blitz
 module Curl 
-class Verify
+class Sprint
     class Request
         attr_reader :line
         attr_reader :method
