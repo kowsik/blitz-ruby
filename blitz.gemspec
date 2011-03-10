@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "bin/blitz",
+    "blitz.gemspec",
     "lib/blitz.rb",
     "lib/blitz/client.rb",
     "lib/blitz/command.rb",
@@ -33,7 +34,7 @@ Gem::Specification.new do |s|
     "lib/blitz/command/curl.rb",
     "lib/blitz/command/help.rb",
     "lib/blitz/curl/error.rb",
-    "lib/blitz/curl/verify.rb",
+    "lib/blitz/curl/sprint.rb",
     "lib/blitz/helper.rb",
     "test/helper.rb",
     "test/test_blitz.rb"
