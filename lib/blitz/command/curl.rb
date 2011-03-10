@@ -15,7 +15,7 @@ class Curl < Command
             sprint args
             return
         else
-            error "Rushing not supported yet, but coming soon"
+            rush args
         end
     end
     
@@ -25,19 +25,18 @@ class Curl < Command
     def authorize_error e
         base_url = "#{e.scheme}://#{e.host}:#{e.port}"
         puts
-        error "You haven't verified that you are the devops dude for #{e.host}"
+        error "You haven't verified that you are the devops dude for #{e.host}. Make"
+        error "sure the following URL is reachable and returns the string '42'."
         error ""
-        error "Make sure the following URL is reachable by us and returns the value 42."
         error "#{base_url}/#{e.uuid}"
         error ""
-        error "If your app is RESTfully built with sinatra or rails, simply"
-        error "add a route like so:"
+        error "If your app is RESTfully built with sinatra or rails, simply add this route:"
         error ""
         error "get '/#{e.uuid}' do"
         error "    '42'"
         error "end"
         error ""
-        error "And we'll be on our merry way to blitz #{e.host}"
+        error "Once this is done, you can blitz #{e.host} all you want."
         puts
     end
 
@@ -101,6 +100,50 @@ class Curl < Command
         end
     end
 
+    def rush args
+        continue = true
+        begin
+            [ 'INT', 'STOP', 'HUP' ].each do |s| 
+                trap(s) { continue = false }
+            end
+            job = ::Blitz::Curl::Rush.execute args
+            msg "rushing from #{job.region}..."
+            job.result do |result|
+                print_rush_result result
+                sleep 1.0 if not continue
+                continue
+            end
+            puts
+            msg "[aborted]" if not continue
+        rescue ::Blitz::Curl::Error::Authorize => e
+            authorize_error e
+        rescue ::Blitz::Curl::Error::Region => e
+            error "#{e.region}: #{e.message}"
+        rescue ::Blitz::Curl::Error => e
+            error e.message
+        end
+    end
+    
+    def print_rush_result result
+        recent = result.timeline[-1]
+        hits = "%u hits" % recent.hits
+        errors = recent.errors ? ", %u errors" % recent.errors : ''
+        timeouts = recent.timeouts ? ", %u timeouts" % recent.timeouts : ''
+        bandwidth = ''
+        if result.timeline.size > 1
+            last = result.timeline[-2]
+            elapsed = recent.timestamp - last.timestamp
+            bps = (recent.rxbytes + recent.txbytes) - (last.rxbytes + last.txbytes)/elapsed
+            bandwidth = " - %.2f bytes/sec" % bps
+        else
+            bps = (recent.rxbytes + recent.txbytes)/recent.timestamp
+            bandwidth = " - %.2f bytes/sec" % bps
+        end
+        duration = recent.duration >= 0 ? " @ %.2f sec" % recent.duration : ''
+        $stdout.print "#{hits}#{errors}#{timeouts}#{bandwidth}#{duration}\n"
+        $stdout.flush
+    end
+
     def help
         helps = [
             { :short => '-A', :long => '--user-agent', :value => '<string>', :help => 'User-Agent to send to server' },
@@ -111,7 +154,7 @@ class Curl < Command
             { :short => '-h', :long => '--help', :value => '', :help => 'Help on command line options' },
             { :short => '-H', :long => '--header', :value => '<string>', :help => 'Custom header to pass to server' },
             { :short => '-p', :long => '--pattern', :value => '<s>-<e>:<d>', :help => 'Ramp from s to e concurrent requests in d secs' },
-            { :short => '-r', :long => '--region', :value => '<string>', :help => 'Choose one of california, virginia, singapore or ireland' },
+            { :short => '-r', :long => '--region', :value => '<string>', :help => 'california|virginia|singapore|ireland|japan' },
             { :short => '-s', :long => '--status', :value => '<number>', :help => 'Assert on the HTTP response status code' },
             { :short => '-T', :long => '--timeout', :value => '<ms>', :help => 'Wait time for both connect and responses' },
             { :short => '-u', :long => '--user', :value => '<user[:pass]>', :help => 'User and password for authentication' },

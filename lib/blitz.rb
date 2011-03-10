@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'hexy'
+require 'pp'
 
 class Blitz
     require 'blitz/helper'
@@ -28,4 +29,5 @@ end
 require 'blitz/client'
 require 'blitz/curl/error'
 require 'blitz/curl/sprint'
+require 'blitz/curl/rush'
 require 'blitz/command'
