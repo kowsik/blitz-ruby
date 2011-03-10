@@ -12,7 +12,7 @@ class Client
             :headers => {
                 :x_api_user => user,
                 :x_api_key => apik,
-                :x_api_version => ::Blitz::Version
+                :x_gem_version => ::Blitz::Version
             }
     end
     
