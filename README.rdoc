@@ -1,4 +1,4 @@
-= blitz
+## ![blitz.io](http://blitz.io/images/logo2.png)
 
 Make load and performance a fun sport.
 
@@ -7,4 +7,3 @@ Make load and performance a fun sport.
 * Condition your site around the clock
 
 Copyright (c) 2011 Mu Dynamics. See LICENSE.txt for further details.
-
