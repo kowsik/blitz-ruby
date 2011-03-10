@@ -1,0 +1,26 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    git (1.2.5)
+    hexy (0.1.1)
+    jeweler (1.5.1)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    json (1.4.6)
+    json_pure (1.4.6)
+    mime-types (1.16)
+    rake (0.8.7)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.0.0)
+  hexy (~> 0.1.1)
+  jeweler (~> 1.5.1)
+  json (~> 1.4.6)
+  json_pure (~> 1.4.6)
+  rest-client (~> 1.6.1)
