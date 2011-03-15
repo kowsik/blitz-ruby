@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'couchrest'
 require 'hexy'
 require 'pp'
 

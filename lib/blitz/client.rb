@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'json/pure'
-require 'restclient'
-
 class Blitz
 class Client
     attr_reader :blitz

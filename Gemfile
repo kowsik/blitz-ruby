@@ -3,6 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
+gem "couchrest", "~> 1.0.1"
 gem "rest-client", "~> 1.6.1"
 gem "json", "~> 1.4.6"
 gem "json_pure", "~> 1.4.6"
