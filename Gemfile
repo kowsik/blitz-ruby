@@ -5,8 +5,8 @@ source "http://rubygems.org"
 
 gem "couchrest", "~> 1.0.1"
 gem "rest-client", "~> 1.6.1"
-gem "json", "~> 1.4.6"
-gem "json_pure", "~> 1.4.6"
+gem "json", "~> 1.5.1"
+gem "json_pure", "~> 1.5.1"
 gem "hexy", "~> 0.1.1"
 
 # Add dependencies to develop your gem here.
