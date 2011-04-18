@@ -5,7 +5,7 @@ require 'pp'
 
 class Blitz
     require 'blitz/helper'
-    Version = "0.1.4".freeze
+    Version = "0.1.5".freeze
         
     extend Blitz::Helper
     
