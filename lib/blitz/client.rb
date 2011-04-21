@@ -1,5 +1,5 @@
 class Blitz
-class Client
+class Client # :nodoc:
     attr_reader :blitz
     
     def initialize user, apik, host='blitz.io'

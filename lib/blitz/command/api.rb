@@ -1,6 +1,6 @@
 class Blitz
 class Command
-class API < Command
+class API < Command # :nodoc:
     attr_accessor :credentials
         
     def cmd_init argv

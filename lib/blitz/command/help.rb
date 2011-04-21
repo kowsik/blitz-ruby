@@ -1,6 +1,6 @@
 class Blitz
 class Command
-class Help < Command
+class Help < Command # :nodoc:
     def cmd_default argv
         puts
         msg "Usage: blitz <command> <options>"

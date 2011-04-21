@@ -3,9 +3,9 @@ require 'couchrest'
 require 'hexy'
 require 'pp'
 
-class Blitz
+class Blitz # :nodoc:
     require 'blitz/helper'
-    Version = "0.1.5".freeze
+    Version = "0.1.6".freeze
         
     extend Blitz::Helper
     

@@ -2,7 +2,7 @@ require 'couchrest'
 
 class Blitz
 class Command
-class Couch < Command
+class Couch < Command # :nodoc:
     attr_reader :urls
 
     def initialize

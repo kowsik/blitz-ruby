@@ -1,5 +1,5 @@
 class Blitz
-module Helper
+module Helper # :nodoc:
     def error msg
         $stderr.puts "!! #{msg}"
     end

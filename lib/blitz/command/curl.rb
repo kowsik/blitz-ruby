@@ -1,6 +1,6 @@
 class Blitz
 class Command
-class Curl < Command
+class Curl < Command # :nodoc:
     def cmd_help argv
         help
     end
@@ -42,7 +42,7 @@ class Curl < Command
 
     def sprint args
         begin
-            job = ::Blitz::Curl::Sprint.execute args
+            job = ::Blitz::Curl::Sprint.queue args
             result = job.result
             print_sprint_result args, result
         rescue ::Blitz::Curl::Error::Authorize => e
@@ -106,7 +106,7 @@ class Curl < Command
             [ 'INT', 'STOP', 'HUP' ].each do |s| 
                 trap(s) { continue = false }
             end
-            job = ::Blitz::Curl::Rush.execute args
+            job = ::Blitz::Curl::Rush.queue args
             msg "rushing from #{job.region}..."
             job.result do |result|
                 print_rush_result result
