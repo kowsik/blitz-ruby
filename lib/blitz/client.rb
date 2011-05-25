@@ -8,7 +8,7 @@ class Client # :nodoc:
             :headers => {
                 :x_api_user => user,
                 :x_api_key => apik,
-                :x_gem_version => ::Blitz::Version
+                :x_api_client => 'gem'
             }
     end
     
